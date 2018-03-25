@@ -25,8 +25,3 @@ def validate(block, prev_block):
     if hash_block(block) != block.hash:
         return False
     return True
-
-
-# Genesis block with index 0
-def make_genesis_block():
-    return Block(0, None, None)
