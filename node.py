@@ -15,6 +15,12 @@ def get_blocks():
         default=lambda block: block.__dict__)
 
 
+# Get last block
+@route('/block', method='GET')
+def get_block():
+    return json.dumps(blockchain.blockchain[-1].__dict__)
+
+
 # Append block to blockchain
 @route('/append', method='POST')
 def append():
@@ -37,6 +43,15 @@ def add_peer():
 @route('/peers', method='DELETE')
 def remove_peer():
     peers.remove(request.body.read().decode('utf-8'))
+
+
+# Broadcast message to all peers
+def broadcast(func, body=None):
+    for peer in peers:
+        try:
+            func(peer, body)
+        except:
+            print(f'Failed to reach {peer}')
 
 
 run(host='localhost', port=8080)
