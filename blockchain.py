@@ -7,7 +7,7 @@ blockchain = [block.make_genesis_block()]
 # Validate blockchain
 def validate(blockchain):
     # First block should be genesis block
-    if blockchain[0] != block.make_genesis_block():
+    if blockchain[0].__dict__ != block.make_genesis_block().__dict__:
         return False
 
     # All subsequent blocks should be valid

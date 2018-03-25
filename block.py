@@ -8,14 +8,6 @@ class Block:
         self.hash = hash_block(self)
 
 
-    def __eq__(self, other):
-        return self.__dict__ == other.__dict__
-
-    
-    def __ne__(self, other):
-        return not self.__eq__(other)
-
-
 # Block hashing function (SHA265 of index, data, and hash of previous block)
 def hash_block(block):
     block_hash = hashlib.sha256()
