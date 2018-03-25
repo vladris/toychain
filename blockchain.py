@@ -27,7 +27,3 @@ def validate(blockchain):
 def append(data):
     index, prev_hash = blockchain[-1].index + 1, blockchain[-1].hash
     blockchain.append(block.Block(index, data, prev_hash))
-
-
-append("Foo")
-print(validate(blockchain))
